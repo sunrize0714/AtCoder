@@ -15,14 +15,12 @@ typedef vector<pair<ll,ll>> vp;
 class UnionFind{
     public:
     // parent , size 
-    ll par[1000009],siz[1000009];
+    vll par,siz;
     
     // make unionfind tree, 0-indexed
     void init(ll N){
-        for(ll i=0;i<N;i++){
-            par[i] = -1;
-            siz[i] = 1;
-        }
+        par.resize(N,-1);
+        siz.resize(N,1);
     }
 
     // return root of x
@@ -60,40 +58,30 @@ class UnionFind{
 
 };
 
-ll dist(ll ax,ll ay, ll bx, ll by){
-    return (ax-bx)*(ax-bx) + (ay-by)*(ay-by); 
+ll distance(ll ax,ll ay,ll bx, ll by){
+    return (ax-bx)*(ax-bx) + (ay-by)*(ay-by);
 }
 
 int main(){
     ll n;
     cin >> n;
-    ll sx,sy,gx,gy;
-    cin >> sx >> sy >> gx >> gy;
+    ll sx,sy,tx,ty;
+    cin >> sx >> sy >> tx >> ty;
     vll x(n),y(n),r(n);
     rep(i,0,n)cin >> x[i] >> y[i] >> r[i];
     UnionFind UF;
-    UF.init(n+3);
+    UF.init(n+2);
     rep(i,0,n){
-        if(dist(x[i],y[i],sx,sy) == r[i]*r[i]){
-            UF.unite(i,n);
-        }
-
-        if(dist(x[i],y[i],gx,gy) == r[i]*r[i]){
-            UF.unite(i,n+1);
-        }
+        if(distance(sx,sy,x[i],y[i]) == r[i]*r[i])UF.unite(i,n);
+        if(distance(tx,ty,x[i],y[i]) == r[i]*r[i])UF.unite(i,n+1);
     }
-
-    rep(i,0,n-1){
+    rep(i,0,n){
         rep(j,i+1,n){
-            ll dis = dist(x[i],y[i],x[j],y[j]);
-            ll min = (r[i]-r[j])*(r[i]-r[j]);
-            ll maxi = (r[i]+r[j])*(r[i]+r[j]);
-            if(min <= dis && dis <= maxi){
-                UF.unite(i,j);
-            }
+            ll d = distance(x[i],y[i],x[j],y[j]);
+            if(d >= distance(r[i],0,r[j],0) && d <= (r[i]+r[j])*(r[i]+r[j]))UF.unite(i,j);
         }
     }
+    if(UF.same(n,n+1))cout << "Yes";
+    else cout << "No";
 
-    if(UF.same(n,n+1))cout << "Yes" << endl;
-    else cout << "No" << endl;
 }
