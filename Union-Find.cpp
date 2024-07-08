@@ -15,14 +15,12 @@ typedef vector<pair<ll,ll>> vp;
 class UnionFind{
     public:
     // parent , size 
-    ll par[500009],siz[500009];
+    vll par,siz;
     
     // make unionfind tree, 0-indexed
     void init(ll N){
-        for(ll i=0;i<N;i++){
-            par[i] = -1;
-            siz[i] = 1;
-        }
+        par.resize(N,-1);
+        siz.resize(N,1);
     }
 
     // return root of x
@@ -59,22 +57,3 @@ class UnionFind{
     }
 
 };
-
-int main(){
-    ll n,m;
-    cin >> n >> m;
-    UnionFind UF;
-    UF.init(n);
-    rep(i,0,m){
-        ll a,b;
-        cin >> a >> b;
-        a--,b--;
-        UF.unite(a,b);
-    }
-    set<ll> ans;
-    rep(i,0,n){
-        ll pos = UF.root(i);
-        ans.insert(pos);
-    }
-    cout << ans.size() - 1 << endl;
-}
