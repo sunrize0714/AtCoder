@@ -13,6 +13,15 @@ typedef vector<pair<ll,ll>> vp;
 #define mod 998244353
 #define all(a) a.begin(),a.end()
 
+bool in_field(ll l,ll r,ll x){
+    if(l <= x && x < r)return true;
+    else return false;
+}
+
+ll distance(ll ax,ll ay,ll bx, ll by){
+    return (ax-bx)*(ax-bx) + (ay-by)*(ay-by);
+}
+
 ll modinv(ll a, ll m) {
     ll b=m,u=1,v=0;
     while(b){
