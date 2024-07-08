@@ -83,5 +83,4 @@ int main(){
     }
     if(UF.same(n,n+1))cout << "Yes";
     else cout << "No";
-
 }
