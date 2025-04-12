@@ -34,27 +34,11 @@ ll modinv(ll a, ll m) {
     return u;
 }
 
-bool cross(ll a,ll b,ll l,ll r){
-    return not (b <= l or r <= a);
-}
-
 ll dx4[4] = {1,0,-1,0};
 ll dy4[4] = {0,-1,0,1};
 ll dx8[8] = {1,1,0,-1,-1,-1,0,1};
 ll dy8[8] = {0,-1,-1,-1,0,1,1,1};
 
 int main(){
-    ll l,r;
-    cin >> l >> r;
-    ll ans = 2020;
-    rep(i,l,r+1){
-        rep(j,i+1,r+1){
-            ans = min(ans,i*j%2019);
-            if(ans == 0){
-                cout << ans << endl;
-                return 0;
-            }
-        }
-    }
-    cout << ans << endl;
+    
 }
