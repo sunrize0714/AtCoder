@@ -40,8 +40,22 @@ ll dx8[8] = {1,1,0,-1,-1,-1,0,1};
 ll dy8[8] = {0,-1,-1,-1,0,1,1,1};
 
 int main(){
-    ll s;
-    cin >> s;
-    if(s >= 200 && s < 300)cout << "Success";
-    else cout << "Failure";
+    ll n,k;
+    cin >> n >> k;
+
+    if(n < k){
+        cout << 1;
+        return 0;
+    }
+    vll dp(n+2,0),wa(n+2,0);
+    rep(i,0,k)dp[i] = 1;
+    rep(i,0,k)wa[i+1] = wa[i]+dp[i];
+    rep(i,k,n+1){
+        dp[i] = wa[i] - wa[i-k];
+        if(dp[i] < 0)dp[i] += 1e9;
+        dp[i] %= 1000000000;
+        wa[i+1] = wa[i] + dp[i];
+        wa[i+1] %= 1000000000;
+    } 
+    cout << dp[n];
 }

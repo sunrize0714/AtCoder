@@ -40,8 +40,27 @@ ll dx8[8] = {1,1,0,-1,-1,-1,0,1};
 ll dy8[8] = {0,-1,-1,-1,0,1,1,1};
 
 int main(){
-    ll s;
-    cin >> s;
-    if(s >= 200 && s < 300)cout << "Success";
-    else cout << "Failure";
+    ll n;
+    cin >> n;
+    vs s(n);
+    rep(i,0,n)cin >> s[i];
+    ll ans = 0;
+    bool in = false;
+    bool pr = false;
+    rep(i,0,n){
+        if(s[i] == "login"){
+            in = true;
+        }
+        else if(s[i] == "logout"){
+            in = false;
+        }
+        else if(s[i] == "public"){
+            pr = false;
+        }
+        else if(s[i] == "private"){
+            if(in == false)ans++;
+            pr = true;
+        }
+    }
+    cout << ans;
 }

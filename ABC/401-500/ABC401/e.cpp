@@ -40,8 +40,11 @@ ll dx8[8] = {1,1,0,-1,-1,-1,0,1};
 ll dy8[8] = {0,-1,-1,-1,0,1,1,1};
 
 int main(){
-    ll s;
-    cin >> s;
-    if(s >= 200 && s < 300)cout << "Success";
-    else cout << "Failure";
+    ll n,m;
+    cin >> n >> m;
+    vll u(m),v(m);
+    rep(i,0,m)cin >> u[i] >> v[i];
+    rep(i,0,m)u[i]--,v[i]--;
+    vll ans(n);
+    ans[n-1] = 0;
 }
