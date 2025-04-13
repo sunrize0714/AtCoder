@@ -5,7 +5,7 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/**",
-                "C:/Users/dream/OneDrive/デスクトップ/ac-library-master/atcoder",
+                "C:/Users/dream/OneDrive/デスクトップ/AtCoder-2/atcoder",
                 "C:/Program Files (x86)/2999/include"
             ],
             "defines": [
