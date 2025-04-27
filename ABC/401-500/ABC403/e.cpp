@@ -41,23 +41,5 @@ ll dx8[8] = {1,1,0,-1,-1,-1,0,1};
 ll dy8[8] = {0,-1,-1,-1,0,1,1,1};
 
 int main(){
-    ll n;
-    cin >> n;
-    vll a(n),b(n);
-    rep(i,0,n)cin >> a[i];
-    rep(i,0,n)cin >> b[i];
-    vvll dp(n+1,vll(3002,0));
-    dp[0][0] = 1;
-    rep(i,0,n+1){
-        rep(j,0,3001){
-            dp[i][j+1] += dp[i][j];
-            dp[i][j+1] %= mod;
-        }
-        if(i == n)break;
-        rep(j,a[i],b[i]+1){
-            dp[i+1][j] += dp[i][j];
-            dp[i+1][j] %= mod;
-        }
-    }
-    cout << dp[n][3000] << endl;
+    
 }
